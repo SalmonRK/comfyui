@@ -34,7 +34,8 @@ CHECKPOINT_MODELS=(
 LORA_MODELS=(
     #"https://civitai.com/api/download/models/16576"
     "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sd15_lora.safetensors"
-    "https://huggingface.co/latent-consistency/lcm-lora-sdxl/resolve/main/pytorch_lora_weights.safetensors?download=true"
+    "https://huggingface.co/salmonrk/Krita-models/resolve/main/lcm-lora-sdv1-5.safetensors"
+    "https://huggingface.co/salmonrk/Krita-models/resolve/main/lcm-lora-sdxl.safetensors"
     "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sdxl_lora.safetensors"
 
 )
@@ -94,6 +95,7 @@ DEPTH_MODELS=(https://huggingface.co/spaces/LiheYoung/Depth-Anything/resolve/mai
 YOLO_MODELS=(https://huggingface.co/hr16/yolo-nas-fp16/resolve/main/yolo_nas_l_fp16.onnx)
 DWPOSE_MODELS=(https://huggingface.co/yzd-v/DWPose/resolve/main/dw-ll_ucoco_384.onnx)
 CLIP_VISION_MODELS=(https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors)
+EMBEDDING_MODELS=(https://huggingface.co/embed/EasyNegative/resolve/main/EasyNegative.safetensors)
 
 UPSCALE_MODELS=(
     "https://huggingface.co/gemasai/4x_NMKD-Superscale-SP_178000_G/resolve/main/4x_NMKD-Superscale-SP_178000_G.pth"
@@ -115,51 +117,55 @@ function provisioning_start() {
     provisioning_get_nodes
     provisioning_install_python_packages
     provisioning_get_models \
-        "${WORKSPACE}/storage/stable_diffusion/models/ckpt" \
+        "${WORKSPACE}/ComfyUI/models/ckpt" \
         "${CHECKPOINT_MODELS[@]}"
-    #provisioning_get_models \
-    #    "${WORKSPACE}/ComfyUI/models/clip_vision/sd1.5" \
-    #    "${CLIP_VISION_MODELS[@]}"
     provisioning_get_models \
-        "${WORKSPACE}/storage/stable_diffusion/models/lora" \
+        "${WORKSPACE}/ComfyUI/models/clip_vision/sd1.5" \
+        "${CLIP_VISION_MODELS[@]}"
+    provisioning_get_models \
+        "${WORKSPACE}/ComfyUI/models/loras" \
         "${LORA_MODELS[@]}"
-    #provisioning_get_models \
-    #    "${WORKSPACE}/ComfyUI/models/controlnet" \
-    #    "${CONTROLNET_MODELS[@]}"
     provisioning_get_models \
-        "${WORKSPACE}/storage/stable_diffusion/models/vae" \
+        "${WORKSPACE}/ComfyUI/models/controlnet" \
+        "${CONTROLNET_MODELS[@]}"
+    provisioning_get_models \
+        "${WORKSPACE}/ComfyUI/models/vae" \
         "${VAE_MODELS[@]}"
     provisioning_get_models \
-        "${WORKSPACE}/storage/stable_diffusion/models/esrgan" \
+        "${WORKSPACE}/ComfyUI/models/esrgan" \
         "${ESRGAN_MODELS[@]}"
-    #provisioning_get_models \
-    #    "${WORKSPACE}/storage/stable_diffusion/models/inpaint" \
-    #    "${INPAINT_MODELS[@]}"
-    #provisioning_get_models \
-    #    "${WORKSPACE}/storage/stable_diffusion/models/ipadapter" \
-    #    "${IPADAPTER_MODELSS[@]}"
-    #provisioning_get_models \
-    #    "${WORKSPACE}/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/lllyasviel/Annotators" \
-    #    "${ANNOTATORS_MODELS[@]}"
-    #provisioning_get_models \
-    #    "${WORKSPACE}/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/LiheYoung/Depth-Anything/checkpoints" \
-    #    "${DEPTH_MODELS[@]}"
-    #provisioning_get_models \
-    #    "${WORKSPACE}/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/hr16/yolo-nas-fp16" \
-    #    "${YOLO_MODELS[@]}"
-    #provisioning_get_models \
-    #    "${WORKSPACE}/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/yzd-v/DWPose" \
-    #    "${DWPOSE_MODELS[@]}"
-    #provisioning_get_models \
-    #    "${WORKSPACE}/ComfyUI/models/upscale_models" \
-    #    "${UPSCALE_MODELS[@]}"
-    cd ${WORKSPACE}
-    wget https://github.com/Acly/krita-ai-diffusion/releases/download/v1.17.2/krita_ai_diffusion-1.17.2.zip
-    unzip krita_ai_diffusion-1.17.2.zip
-    python3 ${WORKSPACE}/ai_diffusion/download_models.py ${WORKSPACE}/ComfyUI
-    rm -rf ai_diffusion
-    rm -rf ai_diffusion.desktop
-    rm -rf krita_ai_diffusion-1.17.2.zip
+    provisioning_get_models \
+        "${WORKSPACE}/ComfyUI/models/models/inpaint" \
+        "${INPAINT_MODELS[@]}"
+    provisioning_get_models \
+        "${WORKSPACE}/ComfyUI/models/ipadapter" \
+        "${IPADAPTER_MODELSS[@]}"
+    provisioning_get_models \
+        "${WORKSPACE}/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/lllyasviel/Annotators" \
+        "${ANNOTATORS_MODELS[@]}"
+    provisioning_get_models \
+        "${WORKSPACE}/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/LiheYoung/Depth-Anything/checkpoints" \
+        "${DEPTH_MODELS[@]}"
+    provisioning_get_models \
+        "${WORKSPACE}/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/hr16/yolo-nas-fp16" \
+        "${YOLO_MODELS[@]}"
+    provisioning_get_models \
+        "${WORKSPACE}/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/yzd-v/DWPose" \
+        "${DWPOSE_MODELS[@]}"
+    provisioning_get_models \
+        "${WORKSPACE}/ComfyUI/models/upscale_models" \
+        "${UPSCALE_MODELS[@]}"
+    provisioning_get_models \
+        "${WORKSPACE}/ComfyUI/models/embeddings/" \
+        "${EMBEDDING_MODELS[@]}"
+    
+    #cd ${WORKSPACE}
+    #wget https://github.com/Acly/krita-ai-diffusion/releases/download/v1.17.2/krita_ai_diffusion-1.17.2.zip
+    #unzip krita_ai_diffusion-1.17.2.zip
+    #python3 ${WORKSPACE}/ai_diffusion/download_models.py ${WORKSPACE}/ComfyUI
+    #rm -rf ai_diffusion
+    #rm -rf ai_diffusion.desktop
+    #rm -rf krita_ai_diffusion-1.17.2.zip
     provisioning_print_end
 }
 
