@@ -109,6 +109,10 @@ function provisioning_start() {
     DISK_GB_AVAILABLE=$(($(df --output=avail -m "${WORKSPACE}" | tail -n1) / 1000))
     DISK_GB_USED=$(($(df --output=used -m "${WORKSPACE}" | tail -n1) / 1000))
     DISK_GB_ALLOCATED=$(($DISK_GB_AVAILABLE + $DISK_GB_USED))
+    cd ${WORKSPACE}
+    wget https://github.com/Acly/krita-ai-diffusion/releases/download/v1.17.2/krita_ai_diffusion-1.17.2.zip
+    unzip krita_ai_diffusion-1.17.2.zip
+    python ${WORKSPACE}/ai_diffusion/download_models.py ${WORKSPACE}/ComfyUI
     provisioning_print_header
     provisioning_get_nodes
     provisioning_install_python_packages
@@ -153,10 +157,7 @@ function provisioning_start() {
     #    "${UPSCALE_MODELS[@]}"
     provisioning_print_end
 }
-cd ${WORKSPACE}
-wget https://github.com/Acly/krita-ai-diffusion/releases/download/v1.17.2/krita_ai_diffusion-1.17.2.zip
-unzip krita_ai_diffusion-1.17.2.zip
-python ${WORKSPACE}/ai_diffusion/download_models.py ${WORKSPACE}/ComfyUI
+
 
 function provisioning_get_nodes() {
     for repo in "${NODES[@]}"; do
