@@ -135,7 +135,7 @@ function provisioning_start() {
         "${WORKSPACE}/ComfyUI/models/esrgan" \
         "${ESRGAN_MODELS[@]}"
     provisioning_get_models \
-        "${WORKSPACE}/ComfyUI/models/models/inpaint" \
+        "${WORKSPACE}/ComfyUI/models/inpaint" \
         "${INPAINT_MODELS[@]}"
     provisioning_get_models \
         "${WORKSPACE}/ComfyUI/models/ipadapter" \
