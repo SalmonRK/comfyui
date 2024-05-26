@@ -139,7 +139,7 @@ function provisioning_start() {
         "${INPAINT_MODELS[@]}"
     provisioning_get_models \
         "${WORKSPACE}/ComfyUI/models/ipadapter" \
-        "${IPADAPTER_MODELSS[@]}"
+        "${IPADAPTER_MODELS[@]}"
     provisioning_get_models \
         "${WORKSPACE}/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/lllyasviel/Annotators" \
         "${ANNOTATORS_MODELS[@]}"
