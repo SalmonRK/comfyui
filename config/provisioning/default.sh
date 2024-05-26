@@ -107,11 +107,14 @@ function provisioning_start() {
         "${WORKSPACE}/storage/stable_diffusion/models/ckpt" \
         "${CHECKPOINT_MODELS[@]}"
     provisioning_get_models \
+        "${WORKSPACE}/opt/ComfyUI/models/sd1.5" \
+        "${CLIP_VISION_MODELS[@]}"
+    provisioning_get_models \
         "${WORKSPACE}/storage/stable_diffusion/models/lora" \
         "${LORA_MODELS[@]}"
-    provisioning_get_models \
-        "${WORKSPACE}/storage/stable_diffusion/models/controlnet" \
-        "${CONTROLNET_MODELS[@]}"
+    #provisioning_get_models \
+    #    "${WORKSPACE}/storage/stable_diffusion/models/controlnet" \
+    #    "${CONTROLNET_MODELS[@]}"
     provisioning_get_models \
         "${WORKSPACE}/storage/stable_diffusion/models/vae" \
         "${VAE_MODELS[@]}"
@@ -136,9 +139,6 @@ function provisioning_start() {
     provisioning_get_models \
         "${WORKSPACE}/opt/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/yzd-v/DWPose" \
         "${DWPOSE_MODELS[@]}"
-    provisioning_get_models \
-        "${WORKSPACE}/opt/ComfyUI/models/sd1.5" \
-        "${CLIP_VISION_MODELS[@]}"
     provisioning_print_end
 }
 
