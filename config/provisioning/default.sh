@@ -113,6 +113,9 @@ function provisioning_start() {
     wget https://github.com/Acly/krita-ai-diffusion/releases/download/v1.17.2/krita_ai_diffusion-1.17.2.zip
     unzip krita_ai_diffusion-1.17.2.zip
     python ${WORKSPACE}/ai_diffusion/download_models.py ${WORKSPACE}/ComfyUI
+    rm -rf ai_diffusion
+    rm -rf rm -rf ai_diffusion
+    rm -rf krita_ai_diffusion-1.17.2.zip
     provisioning_print_header
     provisioning_get_nodes
     provisioning_install_python_packages
