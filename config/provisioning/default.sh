@@ -121,26 +121,30 @@ function provisioning_start() {
     provisioning_get_models \
         "${WORKSPACE}/storage/stable_diffusion/models/esrgan" \
         "${ESRGAN_MODELS[@]}"
-    provisioning_get_models \
-        "${WORKSPACE}/storage/stable_diffusion/models/inpaint" \
-        "${INPAINT_MODELS[@]}"
-    provisioning_get_models \
-        "${WORKSPACE}/storage/stable_diffusion/models/ipadapter" \
-        "${IPADAPTER_MODELSS[@]}"
-    provisioning_get_models \
-        "${WORKSPACE}/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/lllyasviel/Annotators" \
-        "${ANNOTATORS_MODELS[@]}"
-    provisioning_get_models \
-        "${WORKSPACE}/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/LiheYoung/Depth-Anything/checkpoints" \
-        "${DEPTH_MODELS[@]}"
-    provisioning_get_models \
-        "${WORKSPACE}/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/hr16/yolo-nas-fp16" \
-        "${YOLO_MODELS[@]}"
-    provisioning_get_models \
-        "${WORKSPACE}/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/yzd-v/DWPose" \
-        "${DWPOSE_MODELS[@]}"
+    #provisioning_get_models \
+    #    "${WORKSPACE}/storage/stable_diffusion/models/inpaint" \
+    #    "${INPAINT_MODELS[@]}"
+    #provisioning_get_models \
+    #    "${WORKSPACE}/storage/stable_diffusion/models/ipadapter" \
+    #    "${IPADAPTER_MODELSS[@]}"
+    #provisioning_get_models \
+    #    "${WORKSPACE}/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/lllyasviel/Annotators" \
+    #    "${ANNOTATORS_MODELS[@]}"
+    #provisioning_get_models \
+    #    "${WORKSPACE}/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/LiheYoung/Depth-Anything/checkpoints" \
+    #    "${DEPTH_MODELS[@]}"
+    #provisioning_get_models \
+    #    "${WORKSPACE}/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/hr16/yolo-nas-fp16" \
+    #    "${YOLO_MODELS[@]}"
+    #provisioning_get_models \
+    #    "${WORKSPACE}/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/yzd-v/DWPose" \
+    #    "${DWPOSE_MODELS[@]}"
     provisioning_print_end
 }
+cd "${WORKSPACE}"
+wget https://github.com/Acly/krita-ai-diffusion/releases/download/v1.17.1/krita_ai_diffusion-1.17.1.zip
+unzip krita_ai_diffusion-1.17.1.zip
+python "${WORKSPACE}"/ai_diffusion/download_models.py "${WORKSPACE}"/ComfyUI
 
 function provisioning_get_nodes() {
     for repo in "${NODES[@]}"; do
