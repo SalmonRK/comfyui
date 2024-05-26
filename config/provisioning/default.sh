@@ -137,7 +137,7 @@ function provisioning_start() {
         "${WORKSPACE}/opt/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/yzd-v/DWPose" \
         "${DWPOSE_MODELS[@]}"
     provisioning_get_models \
-        "${WORKSPACE}/opt/ComfyUI/models/SD1.5" \
+        "${WORKSPACE}/opt/ComfyUI/models/sd1.5" \
         "${CLIP_VISION_MODELS[@]}"
     provisioning_print_end
 }
