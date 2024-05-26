@@ -8,7 +8,8 @@
 
 PYTHON_PACKAGES=(
     #"opencv-python==4.7.0.72"
-    "aiohttp tqdm"
+    "aiohttp"
+    "tqdm"
     "insightface"
     "onnxruntime"
     "mediapipe"
@@ -158,7 +159,6 @@ function provisioning_start() {
     python3 ${WORKSPACE}/ai_diffusion/download_models.py ${WORKSPACE}/ComfyUI
     rm -rf ai_diffusion
     rm -rf ai_diffusion.desktop
-    ai_diffusion
     rm -rf krita_ai_diffusion-1.17.2.zip
     provisioning_print_end
 }
