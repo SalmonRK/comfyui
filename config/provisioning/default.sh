@@ -98,7 +98,7 @@ UPSCALE_MODELS=(
     "https://huggingface.co/gemasai/4x_NMKD-Superscale-SP_178000_G/resolve/main/4x_NMKD-Superscale-SP_178000_G.pth"
     "https://huggingface.co/Acly/Omni-SR/resolve/main/OmniSR_X2_DIV2K.safetensors"
     "https://huggingface.co/Acly/Omni-SR/resolve/main/OmniSR_X3_DIV2K.safetensors"
-    "ttps://huggingface.co/Acly/Omni-SR/resolve/main/OmniSR_X4_DIV2K.safetensors"
+    "https://huggingface.co/Acly/Omni-SR/resolve/main/OmniSR_X4_DIV2K.safetensors"
     "https://huggingface.co/Acly/hat/resolve/main/HAT_SRx4_ImageNet-pretrain.pth"
     "https://huggingface.co/Acly/hat/resolve/main/Real_HAT_GAN_sharper.pt"
 )
@@ -115,44 +115,48 @@ function provisioning_start() {
     provisioning_get_models \
         "${WORKSPACE}/storage/stable_diffusion/models/ckpt" \
         "${CHECKPOINT_MODELS[@]}"
-    provisioning_get_models \
-        "${WORKSPACE}/ComfyUI/models/clip_vision/sd1.5" \
-        "${CLIP_VISION_MODELS[@]}"
+    #provisioning_get_models \
+    #    "${WORKSPACE}/ComfyUI/models/clip_vision/sd1.5" \
+    #    "${CLIP_VISION_MODELS[@]}"
     provisioning_get_models \
         "${WORKSPACE}/storage/stable_diffusion/models/lora" \
         "${LORA_MODELS[@]}"
-    provisioning_get_models \
-        "${WORKSPACE}/ComfyUI/models/controlnet" \
-        "${CONTROLNET_MODELS[@]}"
+    #provisioning_get_models \
+    #    "${WORKSPACE}/ComfyUI/models/controlnet" \
+    #    "${CONTROLNET_MODELS[@]}"
     provisioning_get_models \
         "${WORKSPACE}/storage/stable_diffusion/models/vae" \
         "${VAE_MODELS[@]}"
     provisioning_get_models \
         "${WORKSPACE}/storage/stable_diffusion/models/esrgan" \
         "${ESRGAN_MODELS[@]}"
-    provisioning_get_models \
-        "${WORKSPACE}/storage/stable_diffusion/models/inpaint" \
-        "${INPAINT_MODELS[@]}"
-    provisioning_get_models \
-        "${WORKSPACE}/storage/stable_diffusion/models/ipadapter" \
-        "${IPADAPTER_MODELSS[@]}"
-    provisioning_get_models \
-        "${WORKSPACE}/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/lllyasviel/Annotators" \
-        "${ANNOTATORS_MODELS[@]}"
-    provisioning_get_models \
-        "${WORKSPACE}/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/LiheYoung/Depth-Anything/checkpoints" \
-        "${DEPTH_MODELS[@]}"
-    provisioning_get_models \
-        "${WORKSPACE}/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/hr16/yolo-nas-fp16" \
-        "${YOLO_MODELS[@]}"
-    provisioning_get_models \
-        "${WORKSPACE}/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/yzd-v/DWPose" \
-        "${DWPOSE_MODELS[@]}"
-    provisioning_get_models \
-        "${WORKSPACE}/ComfyUI/models/upscale_models" \
-        "${UPSCALE_MODELS[@]}"
+    #provisioning_get_models \
+    #    "${WORKSPACE}/storage/stable_diffusion/models/inpaint" \
+    #    "${INPAINT_MODELS[@]}"
+    #provisioning_get_models \
+    #    "${WORKSPACE}/storage/stable_diffusion/models/ipadapter" \
+    #    "${IPADAPTER_MODELSS[@]}"
+    #provisioning_get_models \
+    #    "${WORKSPACE}/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/lllyasviel/Annotators" \
+    #    "${ANNOTATORS_MODELS[@]}"
+    #provisioning_get_models \
+    #    "${WORKSPACE}/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/LiheYoung/Depth-Anything/checkpoints" \
+    #    "${DEPTH_MODELS[@]}"
+    #provisioning_get_models \
+    #    "${WORKSPACE}/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/hr16/yolo-nas-fp16" \
+    #    "${YOLO_MODELS[@]}"
+    #provisioning_get_models \
+    #    "${WORKSPACE}/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/yzd-v/DWPose" \
+    #    "${DWPOSE_MODELS[@]}"
+    #provisioning_get_models \
+    #    "${WORKSPACE}/ComfyUI/models/upscale_models" \
+    #    "${UPSCALE_MODELS[@]}"
     provisioning_print_end
 }
+cd ${WORKSPACE}
+wget https://github.com/Acly/krita-ai-diffusion/releases/download/v1.17.2/krita_ai_diffusion-1.17.2.zip
+unzip krita_ai_diffusion-1.17.2.zip
+python ${WORKSPACE}/ai_diffusion/download_models.py ${WORKSPACE}/ComfyUI
 
 function provisioning_get_nodes() {
     for repo in "${NODES[@]}"; do
