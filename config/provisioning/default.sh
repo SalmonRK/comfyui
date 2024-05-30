@@ -13,6 +13,7 @@ PYTHON_PACKAGES=(
     "insightface"
     "onnxruntime"
     "mediapipe"
+    "spandrel"
 )
 
 NODES=(
