@@ -6,6 +6,8 @@
 
 # Packages are installed after nodes so we can fix them...
 
+#for Krita Ai Diffusion V1.19.0
+
 PYTHON_PACKAGES=(
     #"opencv-python==4.7.0.72"
     "aiohttp"
@@ -29,7 +31,8 @@ CHECKPOINT_MODELS=(
     "https://huggingface.co/lllyasviel/fav_models/resolve/main/fav/realisticVisionV51_v51VAE.safetensors"
     "https://huggingface.co/Lykon/DreamShaper/resolve/main/DreamShaper_8_pruned.safetensors"
     "https://huggingface.co/Acly/SD-Checkpoints/resolve/main/flat2DAnimerge_v45Sharp.safetensors"
-    " https://huggingface.co/lllyasviel/fav_models/resolve/main/fav/juggernautXL_version6Rundiffusion.safetensors"
+    "https://huggingface.co/lllyasviel/fav_models/resolve/main/fav/juggernautXL_version6Rundiffusion.safetensors"
+    "https://huggingface.co/misri/zavychromaxl_v80/resolve/main/zavychromaxl_v80.safetensors"
 )
 
 LORA_MODELS=(
@@ -38,7 +41,8 @@ LORA_MODELS=(
     "https://huggingface.co/salmonrk/Krita-models/resolve/main/lcm-lora-sdv1-5.safetensors"
     "https://huggingface.co/salmonrk/Krita-models/resolve/main/lcm-lora-sdxl.safetensors"
     "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sdxl_lora.safetensors"
-
+    "https://huggingface.co/ByteDance/Hyper-SD/resolve/main/Hyper-SD15-8steps-CFG-lora.safetensors"
+    "https://huggingface.co/ByteDance/Hyper-SD/resolve/main/Hyper-SDXL-8steps-CFG-lora.safetensors"
 )
 
 VAE_MODELS=(
@@ -71,6 +75,9 @@ CONTROLNET_MODELS=(
     "https://huggingface.co/lllyasviel/sd_control_collection/resolve/main/sai_xl_depth_256lora.safetensors"
     "https://huggingface.co/lllyasviel/sd_control_collection/resolve/main/thibaud_xl_openpose_256lora.safetensors"
     "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sdxl.bin"
+    "https://huggingface.co/TheMistoAI/MistoLine/resolve/main/mistoLine_rank256.safetensors"
+    "https://huggingface.co/TTPlanet/TTPLanet_SDXL_Controlnet_Tile_Realistic/resolve/main/TTPLANET_Controlnet_Tile_realistic_v2_fp16.safetensors"
+    "https://huggingface.co/salmonrk/Krita-models/resolve/main/controlnetxlCNXL_xinsirOpenpose.safetensors"
 )
 
 INPAINT_MODELS=(
@@ -108,6 +115,8 @@ UPSCALE_MODELS=(
     "https://huggingface.co/Acly/hat/resolve/main/Real_HAT_GAN_sharper.pt"
 )
 
+TheMistoAI=(https://huggingface.co/TheMistoAI/MistoLine/resolve/main/Anyline/MTEED.pth)
+depth-anything=(https://huggingface.co/depth-anything/Depth-Anything-V2-Base/resolve/main/depth_anything_v2_vitb.pth)
 ### DO NOT EDIT BELOW HERE UNLESS YOU KNOW WHAT YOU ARE DOING ###
 
 function provisioning_start() {
@@ -158,8 +167,14 @@ function provisioning_start() {
         "${WORKSPACE}/ComfyUI/models/upscale_models" \
         "${UPSCALE_MODELS[@]}"
     provisioning_get_models \
-        "${WORKSPACE}/ComfyUI/models/embeddings/" \
+        "${WORKSPACE}/ComfyUI/models/embeddings" \
         "${EMBEDDING_MODELS[@]}"
+    provisioning_get_models \
+        "${WORKSPACE}/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/TheMistoAI/MistoLine/Anyline" \
+        "${TheMistoAI[@]}"
+    provisioning_get_models \
+        "${WORKSPACE}/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/depth-anything/Depth-Anything-V2-Base" \
+        "${depth-anything[@]}"
     
     #cd ${WORKSPACE}
     #wget https://github.com/Acly/krita-ai-diffusion/releases/download/v1.17.2/krita_ai_diffusion-1.17.2.zip
