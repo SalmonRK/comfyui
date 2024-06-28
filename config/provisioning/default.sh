@@ -81,30 +81,30 @@ CONTROLNET_MODELS=(
 )
 
 INPAINT_MODELS=(
-    https://huggingface.co/lllyasviel/fooocus_inpaint/resolve/main/fooocus_inpaint_head.pth
-    https://huggingface.co/lllyasviel/fooocus_inpaint/resolve/main/inpaint_v26.fooocus.patch
-    https://huggingface.co/Acly/MAT/resolve/main/MAT_Places512_G_fp16.safetensors
+    "https://huggingface.co/lllyasviel/fooocus_inpaint/resolve/main/fooocus_inpaint_head.pth"
+    "https://huggingface.co/lllyasviel/fooocus_inpaint/resolve/main/inpaint_v26.fooocus.patch"
+    "https://huggingface.co/Acly/MAT/resolve/main/MAT_Places512_G_fp16.safetensors"
 )
 
 IPADAPTER_MODELS=(
-    https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter_sd15.safetensors
-    https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sd15.bin
-    https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter_sdxl_vit-h.safetensors
-    https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sdxl_lora.safetensors
+    "https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter_sd15.safetensors"
+    "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sd15.bin"
+    "https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter_sdxl_vit-h.safetensors"
+    "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sdxl_lora.safetensors"
 )
 
 ANNOTATORS_MODELS=(
-    https://huggingface.co/lllyasviel/Annotators/resolve/main/table5_pidinet.pth
-    https://huggingface.co/lllyasviel/Annotators/resolve/main/sk_model.pth
-    https://huggingface.co/lllyasviel/Annotators/resolve/main/sk_model2.pth
-    https://huggingface.co/lllyasviel/Annotators/resolve/main/ControlNetHED.pth
+    "https://huggingface.co/lllyasviel/Annotators/resolve/main/table5_pidinet.pth"
+    "https://huggingface.co/lllyasviel/Annotators/resolve/main/sk_model.pth"
+    "https://huggingface.co/lllyasviel/Annotators/resolve/main/sk_model2.pth"
+    "https://huggingface.co/lllyasviel/Annotators/resolve/main/ControlNetHED.pth"
 )
 
-DEPTH_MODELS=(https://huggingface.co/spaces/LiheYoung/Depth-Anything/resolve/main/checkpoints/depth_anything_vitb14.pth)
-YOLO_MODELS=(https://huggingface.co/hr16/yolo-nas-fp16/resolve/main/yolo_nas_l_fp16.onnx)
-DWPOSE_MODELS=(https://huggingface.co/yzd-v/DWPose/resolve/main/dw-ll_ucoco_384.onnx)
-CLIP_VISION_MODELS=(https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors)
-EMBEDDING_MODELS=(https://huggingface.co/embed/EasyNegative/resolve/main/EasyNegative.safetensors)
+DEPTH_MODELS=("https://huggingface.co/spaces/LiheYoung/Depth-Anything/resolve/main/checkpoints/depth_anything_vitb14.pth")
+YOLO_MODELS=("https://huggingface.co/hr16/yolo-nas-fp16/resolve/main/yolo_nas_l_fp16.onnx")
+DWPOSE_MODELS=("https://huggingface.co/yzd-v/DWPose/resolve/main/dw-ll_ucoco_384.onnx")
+CLIP_VISION_MODELS=("https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors")
+EMBEDDING_MODELS=("https://huggingface.co/embed/EasyNegative/resolve/main/EasyNegative.safetensors")
 
 UPSCALE_MODELS=(
     "https://huggingface.co/gemasai/4x_NMKD-Superscale-SP_178000_G/resolve/main/4x_NMKD-Superscale-SP_178000_G.pth"
@@ -115,8 +115,8 @@ UPSCALE_MODELS=(
     "https://huggingface.co/Acly/hat/resolve/main/Real_HAT_GAN_sharper.pt"
 )
 
-TheMistoAI=(https://huggingface.co/TheMistoAI/MistoLine/resolve/main/Anyline/MTEED.pth)
-depth-anything=(https://huggingface.co/depth-anything/Depth-Anything-V2-Base/resolve/main/depth_anything_v2_vitb.pth)
+TheMistoAI=("https://huggingface.co/TheMistoAI/MistoLine/resolve/main/Anyline/MTEED.pth")
+depth-anything=("https://huggingface.co/depth-anything/Depth-Anything-V2-Base/resolve/main/depth_anything_v2_vitb.pth")
 ### DO NOT EDIT BELOW HERE UNLESS YOU KNOW WHAT YOU ARE DOING ###
 
 function provisioning_start() {
