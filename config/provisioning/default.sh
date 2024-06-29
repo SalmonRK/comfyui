@@ -116,7 +116,7 @@ UPSCALE_MODELS=(
 )
 
 TheMistoAI=("https://huggingface.co/TheMistoAI/MistoLine/resolve/main/Anyline/MTEED.pth")
-depth-anything=("https://huggingface.co/depth-anything/Depth-Anything-V2-Base/resolve/main/depth_anything_v2_vitb.pth")
+depth_anything=("https://huggingface.co/depth-anything/Depth-Anything-V2-Base/resolve/main/depth_anything_v2_vitb.pth")
 ### DO NOT EDIT BELOW HERE UNLESS YOU KNOW WHAT YOU ARE DOING ###
 
 function provisioning_start() {
@@ -174,7 +174,7 @@ function provisioning_start() {
         "${TheMistoAI[@]}"
     provisioning_get_models \
         "${WORKSPACE}/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/depth-anything/Depth-Anything-V2-Base" \
-        "${depth-anything[@]}"
+        "${depth_anything[@]}"
     
     #cd ${WORKSPACE}
     #wget https://github.com/Acly/krita-ai-diffusion/releases/download/v1.17.2/krita_ai_diffusion-1.17.2.zip
